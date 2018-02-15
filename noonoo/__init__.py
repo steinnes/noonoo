@@ -10,9 +10,7 @@ from lib import ECR
 @click.option('--prompt', default=False, is_flag=True, help='Prompt for each deletion')
 @click.option('-n', '--dryrun', default=False, is_flag=True, help='Only print intentions')
 def janitor(repository, region, remove_untagged, keep, prompt, dryrun):
-    """ clean up older/untagged images from the ECR.
-    And older app versions from the EB repository.
-    """
+    """ Clean up older/untagged images from an ECR.  """
     ecr = ECR(region=region)
     images = sorted(
         ecr.list_images(repository),
