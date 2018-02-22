@@ -4,6 +4,9 @@
 
 Tool to clean up Elastic Container Repositories in AWS.
 
+The name is lifted from "Noo-Noo", a character on the BBC children's television show Teletubbies.  The [Wikipedia](https://en.wikipedia.org/wiki/Teletubbies#Supporting_characters) description says it best:
+*The Noo-noo is a conscientious vacuum cleaner who acts as both the Teletubbies' guardian and housekeeper. He hardly ever ventures outside the Tubbytronic Superdome, instead remaining indoors and constantly cleaning with his sucker-like nose. He communicates through a series of slurping and sucking noises.*
+
 
 ## Setup
 
@@ -46,6 +49,3 @@ Noonoo uses AWS boto, so it will pickup AWS credentials via `AWS_ACCESS_KEY_ID` 
 
 At [Takumi](https://github.com/TakumiHQ) we push app container images into ECR's as part of our CI process.  These ECR's have the standard size limit of 1000 images, and when they fill up our CI pipeline breaks. Noonoo
 is a repackaged version of a janitor script I wrote for some internal deployment tools we're no longer using.
-
-The name is lifted from "Noo-Noo", a character on the BBC children's television show Teletubbies.  The [Wikipedia](https://en.wikipedia.org/wiki/Teletubbies#Supporting_characters) description says it best:
-*The Noo-noo is a conscientious vacuum cleaner who acts as both the Teletubbies' guardian and housekeeper. He hardly ever ventures outside the Tubbytronic Superdome, instead remaining indoors and constantly cleaning with his sucker-like nose. He communicates through a series of slurping and sucking noises.*
