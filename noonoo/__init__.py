@@ -4,10 +4,10 @@ from lib import ECR
 
 @click.command()
 @click.argument('repository')
-@click.option('--region', help='The AWS region of the ECS repository')
+@click.option('--region', help='The AWS region of the ECR')
 @click.option('--remove_untagged', is_flag=True, help='Remove all images without tags')
 @click.option('--keep', default=50, help='How many old images to keep')
-@click.option('--prompt', default=False, is_flag=True, help='Prompt for each deletion')
+@click.option('--prompt', default=False, is_flag=True, help='Prompt before deleting')
 @click.option('-n', '--dryrun', default=False, is_flag=True, help='Only print intentions')
 def janitor(repository, region, remove_untagged, keep, prompt, dryrun):
     """ Clean up older/untagged images from an ECR.  """
@@ -38,6 +38,9 @@ def janitor(repository, region, remove_untagged, keep, prompt, dryrun):
         click.echo("keeping: {}".format(image))
 
     click.echo("Deleting: {}".format(len(to_delete)))
+    if prompt:
+        if not click.confirm("Images slated for deletion: {}".format(to_delete)):
+            return
 
     if not dryrun:
         ecr.delete_images(repository, to_delete)
